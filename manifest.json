@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Video Translator",
+  "description": "Real-time video translation from any tab — no microphone needed. Captures tab audio directly and translates to 12+ languages. Bilingual AR/EN interface. Developed by binnoma.",
+  "version": "3.2.0",
+  "author": "binnoma",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://speech.googleapis.com/*",
+    "https://api.mymemory.translated.net/*",
+    "https://libretranslate.de/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["content/content.css"],
+      "js": ["content/content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
